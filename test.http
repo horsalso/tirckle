@@ -1,0 +1,40 @@
+@url=http://127.0.0.1:8000/api
+@url_asgi=https://asgi-scope.now.sh/
+
+@post {{url_asgi}}
+###
+
+POST {{url}}/users
+     ?auth=signup
+Content-Type: application/json
+
+{
+  "signin": {
+    "name": "maye",
+    "passwords": "maye"
+  },
+  "signup": {
+    "nickname": "nickname",
+    "email": "email",
+    "passwords": "maye",
+    "passwords_comform": "maye",
+    "registertime": "2020-09-03T11:15:56.677Z",
+    "lastlogin": "2020-09-03T11:15:56.677Z"
+  }
+}
+
+###
+POST {{url}}/users
+     ?auth=signin
+Content-Type: application/json
+
+{
+  "signin": {
+    "name": "maye",
+    "passwords": "maye"
+  }
+}
+
+####
+GET {{url}}/test HTTP/1.1
+Content-Type: application/json
