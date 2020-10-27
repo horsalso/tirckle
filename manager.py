@@ -5,12 +5,13 @@ def env_load():
 env_load()  
 from middlewares.authmiddleware import authmiddleware
 from fastapi import FastAPI
-import views.auth
+import views.auth,views.image
 
 def create_app():
     app=FastAPI()
     ##app.add_middleware(authmiddleware,except_domain=os.getenv('AUTHMIDDLE_EXCEPT_DOMAIN',''))
     app.include_router(views.auth.router,prefix='/api')
+    app.include_router(views.image.base,prefix='/api')
     return app
   
 app=create_app()
